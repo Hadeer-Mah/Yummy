@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meals Website</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class=" text-white bg-black">
+    <div class="loading-screen position-fixed justify-content-center align-items-center">
+		<!-- <i class="fa fa-spinner fa-spin fa-5x text-white"></i> -->
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+    <div class="sideBar d-flex vh-100 position-fixed">
+        <div id="hiddenMenu" class="bg-black text-white text-center d-flex flex-column justify-content-between py-3 px-2">
+            <div class="vertMenu position-relative d-flex justify-content-center">
+                <ul class="d-flex flex-column list-unstyled">
+                    <li class="item1" meal-list="search">Search</li>
+                    <li class="item2" meal-list="categories">Categories</li>
+                    <li class="item3" meal-list="area">Area</li>
+                    <li class="item4" meal-list="ing">Ingredients</li>
+                    <li class="item5" meal-list="contact">Contact Us</li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <div class="social d-flex justify-content-center">
+                    <a href="#"><i class="fab fa-facebook-f text-white icon"></i></a>
+                    <a href="#"><i class="fab fa-twitter mx-4 text-white icon"></i></a>
+                    <a href="#"><i class="fas fa-globe text-white icon"></i></a>
+                </div>
+                <p class="fw-lighter text-muted mt-3">Copyright Â© 2019 All Rights<br> Reserved.</p>
+            </div>
+        </div>
+        <div id="showMenu" class="bg-light text-dark d-flex flex-column justify-content-between py-3 px-2 text-center">
+            <div class="logo"> <img src="img/logo.png" alt="logo"></div>
+            <div class="menuIcon"><i class="fa-solid fa-bars fa-2xl"></i></div>
+            <div class="share d-flex flex-column">
+                <a href="#"><i class="fas fa-globe text-dark mb-2 icon"></i></a>
+                <a href="#"><i class="fas fa-share-alt text-dark icon"></i></a>
+            </div>
+        </div>
+    </div>
+      <main id="searchPage">
+        <div id="search-container" class="container mt-5 mb-5"></div>
+        <div class="container py-4 px-5">
+            <div class="row g-3 px-5" id="mealsContainer">
+                
+            </div>
+        </div>
+      </main>
+
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
