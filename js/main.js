@@ -293,7 +293,7 @@ $(".vertMenu ul li").click(async (e) => {
         $(".loading-screen").fadeIn(100);
         $(".loading-screen").fadeOut(400);
 
-        row.innerHTML = `
+        row.innerHTML = `<form id="formE">
         <div id="contact" class="text-center">
             <h2 class="my-4">Contact Us</h2>
             <div class="row gy-3 mb-4">
@@ -322,9 +322,23 @@ $(".vertMenu ul li").click(async (e) => {
                     <div class="alert d-none" id="reAlert">Passwords Dont Match</div>
                 </div>
             </div>
-            <button type="submit" onclick="submit()" class="btn btn-outline-danger mb-5" id="submitBtn">Submit</button>
+            <button type="submit" disabled onclick="submit()" class="btn btn-outline-danger mb-5" id="submitBtn">Submit</button>
         
-      </div>`
+      </div></form>`
+	 $("#formE").keyup(function(){
+        if(validateEmail() == true && validatePassword() == true && validatePhone() == true && validateAge() == true && password.value == rePassword.value && validateName() == true){
+           document.getElementById("submitBtn").disabled = false;
+           document.getElementById("submitBtn").addEventListener("click", function(event){
+            event.preventDefault()
+            submit()
+          });
+    
+        }else{
+            document.getElementById("submitBtn").disabled = true;
+    
+        }
+    }
+    )
       var userName = document.getElementById("name")
       var email = document.getElementById("email")
       var phone = document.getElementById("phone")
