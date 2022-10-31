@@ -82,6 +82,18 @@ async function fullInfo(id) {
     var apiResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
     var finalData = await apiResponse.json();
     list = finalData.meals[0]
+	let recipes = ""
+    for (let i = 1; i <= 20; i++) {
+        if (list[`strIngredient${i}`]) {
+            recipes += `<li class="my-3 mx-1 p-1 bg-success rounded">${list[`strMeasure${i}`]} ${list[`strIngredient${i}`]}</li>`
+        }
+    }
+
+    let tags = list.strTags?.split(",") 
+    let tagsStr = "" 
+    for (let i = 0; i < tags?.length; i++) { 
+        tagsStr += `<li class="my-3 mx-1 p-1 bg-warning rounded">${tags[i]}</li>` 
+    }
     $(".loading-screen").fadeOut(400);
     if (list.strTags == null) {
         list.strTags = "<span>no tags</span>" }
@@ -98,23 +110,19 @@ async function fullInfo(id) {
     <p><b class="fw-bolder">Category :</b> ${list.strCategory}</p>
     <h3>Recipes :  </h3>
     <ul class="d-flex list-unstyled flex-wrap" id="recipes">
-    <li class="my-3 mx-1 p-1 bg-success rounded">${list.strMeasure1} ${list.strIngredient1}</li>
-    <li class="my-3 mx-1 p-1 bg-success rounded">${list.strMeasure2} ${list.strIngredient2}</li>
-    <li class="my-3 mx-1 p-1 bg-success rounded">${list.strMeasure3} ${list.strIngredient3}</li>
-    <li class="my-3 mx-1 p-1 bg-success rounded">${list.strMeasure4} ${list.strIngredient4}</li>
-    <li class="my-3 mx-1 p-1 bg-success rounded">${list.strMeasure5} ${list.strIngredient5}</li>
-    <li class="my-3 mx-1 p-1 bg-success rounded">${list.strMeasure6} ${list.strIngredient6}</li>
     </ul>
 
     <h3 class="my-2 mx-1 p-1">Tags :</h3>
     <ul class="d-flex list-unstyled" id="tags">
-    <li class="my-3 mx-1 p-1 bg-warning rounded">${list.strTags}</li>
+   
     </ul>
 
     
     <a class="btn btn-success text-white" target="_blank" href="${list.strSource}">Source</a>
     <a class="btn youtube btn-danger" target="_blank" href="${list.strYoutube}">Youtub</a>
 </div>`
+    document.getElementById("recipes").innerHTML = recipes
+    document.getElementById("tags").innerHTML = tagsStr
      $("html, body").animate({
     scrollTop: 0
        }, 200)
